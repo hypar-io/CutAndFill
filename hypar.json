@@ -1,0 +1,73 @@
+{
+  "$schema": "https://hypar.io/Schemas/Function.json",
+  "id": "d1c91582-f269-42df-acd2-8e59f7f5a954",
+  "name": "Cut and Fill",
+  "description": "Measure cut and fill volumes for a site.",
+  "language": "C#",
+  "model_dependencies": [
+    {
+      "name": "location",
+      "optional": false,
+      "autohide": true
+    }
+  ],
+  "element_types": [
+    "https://raw.githubusercontent.com/hypar-io/Schemas/master/Envelope.json",
+    "https://raw.githubusercontent.com/hypar-io/Schemas/master/Origin.json"
+  ],
+  "model_output": "Envelope",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "Site Perimeter": {
+        "$ref": "https://hypar.io/Schemas/Geometry/Polygon.json",
+        "description": "The perimeter of the site."
+      },
+      "Perimeters": {
+        "type": "array",
+        "items": {
+          "$ref": "https://hypar.io/Schemas/Geometry/Polygon.json"
+        },
+        "description": "The perimeters of the cut and fill areas."
+      },
+      "Elevation": {
+        "type": "number",
+        "description": "The elevation of the final site relative to the site origin.",
+        "default": 0.0
+      },
+      "Batter Angle": {
+        "type": "number",
+        "description": "The angle of fill battering in degrees.",
+        "default": 45.0
+      }
+    }
+  },
+  "outputs": [
+    {
+      "unit_type": "volume",
+      "name": "Cut",
+      "description": "The cut volume.",
+      "type": "number"
+    },
+    {
+      "unit_type": "volume",
+      "name": "Fill",
+      "description": "The fill volume.",
+      "type": "number"
+    },
+    {
+      "unit_type": "none",
+      "name": "Excavation Cost",
+      "description": "The cost to excavate soil on the site.",
+      "type": "string"
+    },
+    {
+      "name": "Site Balancing Cost",
+      "description": "The cost to balance cut and fill on the site.",
+      "type": "string"
+    }
+  ],
+  "repository_url": "https://github.com/hypar-io/function",
+  "source_file_key": null,
+  "preview_image": null
+}
