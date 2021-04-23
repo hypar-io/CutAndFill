@@ -39,12 +39,12 @@ namespace CutAndFill
             var results = topo.CutAndFill(input.Perimeters, origin.Elevation + input.Elevation, out List<Mesh> _, out List<Mesh> fills, input.BatterAngle);
 
             // Demonstrate visualization of the fill volumes.
-            model.AddElement(BuiltInMaterials.XAxis);
-            foreach (var fill in fills)
-            {
-                var fillElement = new MeshElement(fill, BuiltInMaterials.XAxis, topo.Transform);
-                model.AddElement(fillElement, false);
-            }
+            // model.AddElement(BuiltInMaterials.XAxis);
+            // foreach (var fill in fills)
+            // {
+            //     var fillElement = new MeshElement(fill, BuiltInMaterials.XAxis, topo.Transform);
+            //     model.AddElement(fillElement, false);
+            // }
 
             // Create temporary envelopes
             foreach (var p in input.Perimeters)
